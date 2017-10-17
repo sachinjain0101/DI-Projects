@@ -12,6 +12,6 @@ public class RestTest{
     @Path("/available")
     @Produces(MediaType.TEXT_PLAIN)
     public String available() {
-        return "yes";
+        return "v1: available: YES";
     }
 }
