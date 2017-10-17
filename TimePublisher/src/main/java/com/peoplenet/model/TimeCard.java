@@ -1,4 +1,4 @@
-package com.peoplenet.dbops.model;
+package com.peoplenet.model;
 
 import java.util.Date;
 

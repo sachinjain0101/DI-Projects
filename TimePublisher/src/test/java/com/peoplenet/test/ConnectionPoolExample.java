@@ -1,10 +1,9 @@
 package com.peoplenet.test;
 
-import com.peoplenet.dbops.model.TimeCard;
-import com.peoplenet.dbops.service.DataSource;
+import com.peoplenet.model.TimeCard;
+import com.peoplenet.service.dao.DataSource;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

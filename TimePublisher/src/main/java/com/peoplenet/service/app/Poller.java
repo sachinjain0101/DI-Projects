@@ -1,4 +1,4 @@
-package com.peoplenet.app;
+package com.peoplenet.service.app;
 
 import org.apache.log4j.Logger;
 

@@ -1,4 +1,4 @@
-package com.peoplenet.ws.v1;
+package com.peoplenet.controller.v1;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
