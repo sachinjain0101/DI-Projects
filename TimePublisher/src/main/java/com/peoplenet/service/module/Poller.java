@@ -1,9 +1,12 @@
-package com.peoplenet.service.app;
+package com.peoplenet.service.module;
 
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Poller implements ServletContextListener{
 
@@ -11,14 +14,9 @@ public class Poller implements ServletContextListener{
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        while(true)
-            try {
-                LOGGER.debug("i am running but dont know why?");
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
+        LOGGER.debug("Poller Initialized...");
+        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(new Publisher(), 0, 1000, TimeUnit.MILLISECONDS);
     }
 
     @Override

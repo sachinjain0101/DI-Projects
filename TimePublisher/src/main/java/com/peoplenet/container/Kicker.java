@@ -1,13 +1,12 @@
 package com.peoplenet.container;
 
-import com.peoplenet.service.app.Poller;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import org.eclipse.jetty.webapp.Configuration;
-import org.eclipse.jetty.webapp.WebAppContext;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,26 +18,23 @@ public class Kicker {
 
     public static void main(String[] args) {
 
-        Server server = new Server(7676);
 
-        Configuration.ClassList classlist = Configuration.ClassList.setServerDefault(server);
-        classlist.addAfter("org.eclipse.jetty.webapp.FragmentConfiguration"
-                            , "org.eclipse.jetty.plus.webapp.EnvConfiguration"
-                            , "org.eclipse.jetty.plus.webapp.PlusConfiguration");
+        Server server = new Server(6661);
 
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        //context.addEventListener(new Poller());
+        context.setContextPath("/");
+        server.setHandler(context);
 
-        WebAppContext webCtx = new WebAppContext();
-
-        ServletContextHandler ctx = new ServletContextHandler(ServletContextHandler.SESSIONS);
-
-        ctx.setContextPath("/");
-        ctx.addEventListener(new Poller());
-        server.setHandler(ctx);
-        ServletHolder servHolder = ctx.addServlet(ServletContainer.class, "/*");
-        servHolder.setInitOrder(1);
-        servHolder.setInitParameter("jersey.config.server.provider.packages","com.peoplenet.ws.v1");
+        ServletHolder holder = context.addServlet(ServletContainer.class.getCanonicalName(), "/*");
+        holder.setInitOrder(0);
+        Map<String, String> initMap = new HashMap<String, String>();
+        initMap.put("jersey.config.server.provider.packages", "com.peoplenet.controller.v1; org.codehaus.jackson.jaxrs");
+        initMap.put("com.sun.jersey.api.json.POJOMappingFeature", "true");
+        holder.setInitParameters(initMap);
 
         try {
+            server.setStopAtShutdown(true);
             server.start();
             server.join();
         } catch (Exception ex) {

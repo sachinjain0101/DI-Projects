@@ -34,7 +34,7 @@ public class ConnectionPoolExample {
                 tc.setClient(rs.getString(1));
                 tc.setGroupCode(rs.getString(2));
                 tc.setSsn(rs.getString(3));
-                tc.setPayrollPeriodEndDate(rs.getDate(4));
+                tc.setPayrollPeriodEndDate(rs.getString(4));
                 tc.setFirstName(rs.getString(5));
                 tc.setLastName(rs.getString(6));
                 tc.setSiteNo(rs.getInt(7));
@@ -42,13 +42,13 @@ public class ConnectionPoolExample {
                 tc.setDeptName(rs.getString(9));
                 tc.setClientDeptCode(rs.getString(10));
                 tc.setCostID(rs.getInt(11));
-                tc.setAssignmentNo(rs.getInt(12));
+                tc.setAssignmentNo(rs.getString(12));
                 tc.setAdjustmentCode(rs.getString(13));
                 tc.setAdjustmentName(rs.getString(14));
                 tc.setAgencyNo(rs.getInt(15));
                 tc.setAprvlStatus(rs.getString(16));
                 tc.setAssignmentStartDate(rs.getString(17));
-                tc.setTransDate(rs.getDate(18));
+                tc.setTransDate(rs.getString(18));
                 tc.setRegHours(rs.getDouble(19));
                 tc.setOtHours(rs.getDouble(20));
                 tc.setDtHours(rs.getDouble(21));

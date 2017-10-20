@@ -1,27 +1,27 @@
 TC_QRY=select THD.Client	\
             , THD.GroupCode	\
             , THD.SSN	\
-            , THD.PayrollPeriodEndDate	\
+            , convert(varchar, THD.PayrollPeriodEndDate, 120)	\
             , hEN.FirstName	\
             , hEN.LastName	\
-            , THD.SiteNo	\
-            , THD.DeptNo	\
+            , coalesce(THD.SiteNo,0)	\
+            , coalesce(THD.DeptNo,0)	\
             , GD.DeptName	\
             , GD.ClientDeptCode	\
             , THD.CostID	\
             , TH_END.AssignmentNo	\
             , THD.AdjustmentCode	\
             , THD.AdjustmentName	\
-            , THD.AgencyNo	\
+            , coalesce(THD.AgencyNo,0)	\
             , THD.AprvlStatus	\
-            , TH_END.AssignmentStartDate	\
-            , THD.TransDate	\
-            , THD.RegHours	\
-            , THD.OT_Hours	\
-            , THD.DT_Hours	\
-            , THD.RegDollars	\
-            , THD.OT_Dollars	\
-            , THD.DT_Dollars	\
+            , convert(varchar, TH_END.AssignmentStartDate, 120)	\
+            , convert(varchar, THD.TransDate, 120)	\
+            , coalesce(THD.RegHours,0)	\
+            , coalesce(THD.OT_Hours,0)	\
+            , coalesce(THD.DT_Hours,0)	\
+            , coalesce(THD.RegDollars,0)	\
+            , coalesce(THD.OT_Dollars,0)	\
+            , coalesce(THD.DT_Dollars,0)	\
        from TimeHistory.dbo.tblTimeHistDetail           as THD with (nolock)	\
            inner join TimeCurrent.dbo.tblEmplNames      as cEN with (nolock)	\
                on cEN.Client = THD.Client	\
@@ -55,9 +55,10 @@ TC_QRY=select THD.Client	\
                on cAC.Client = THD.Client	\
                   and cAC.GroupCode = THD.GroupCode	\
                   and cAC.ClockAdjustmentNo = THD.ClockAdjustmentNo	\
-       where THD.Client = 'AAPL'	\
-             and THD.GroupCode = 110	\
-             and THD.PayrollPeriodEndDate = '20160814'	\
+       where THD.Client = ?	\
+             and THD.GroupCode = ?	\
+             and THD.PayrollPeriodEndDate = ?	\
+             and THD.ssn = ? \
              and THD.InDay < 10	\
              and THD.OutDay < 10	\
              and (	\
@@ -71,3 +72,61 @@ TC_QRY=select THD.Client	\
 
 DT_QRY=select CURRENT_TIMESTAMP AS CT   \
         ;   \
+
+TC_ALL_QRY=select TOP 10000 THD.Client	\
+                       , THD.GroupCode	\
+                       , THD.SSN	\
+                       , convert(varchar, THD.PayrollPeriodEndDate, 120)	\
+                       , hEN.FirstName	\
+                       , hEN.LastName	\
+                       , coalesce(THD.SiteNo,0)	\
+                       , coalesce(THD.DeptNo,0)	\
+                       , GD.DeptName	\
+                       , GD.ClientDeptCode	\
+                       , THD.CostID	\
+                       , TH_END.AssignmentNo	\
+                       , THD.AdjustmentCode	\
+                       , THD.AdjustmentName	\
+                       , coalesce(THD.AgencyNo,0)	\
+                       , THD.AprvlStatus	\
+                       , convert(varchar, TH_END.AssignmentStartDate, 120)	\
+                       , convert(varchar, THD.TransDate, 120)	\
+                       , coalesce(THD.RegHours,0)	\
+                       , coalesce(THD.OT_Hours,0)	\
+                       , coalesce(THD.DT_Hours,0)	\
+                       , coalesce(THD.RegDollars,0)	\
+                       , coalesce(THD.OT_Dollars,0)	\
+                       , coalesce(THD.DT_Dollars,0)	\
+                  from TimeHistory.dbo.tblTimeHistDetail           as THD with (nolock)	\
+                      inner join TimeCurrent.dbo.tblEmplNames      as cEN with (nolock)	\
+                          on cEN.Client = THD.Client	\
+                             and cEN.GroupCode = THD.GroupCode	\
+                             and cEN.SSN = THD.SSN	\
+                      left join TimeHistory.dbo.tblEmplNames       as hEN with (nolock)	\
+                          on hEN.Client = THD.Client	\
+                             and hEN.GroupCode = THD.GroupCode	\
+                             and hEN.SSN = THD.SSN	\
+                             and hEN.PayrollPeriodEndDate = THD.PayrollPeriodEndDate	\
+                      left join TimeCurrent.dbo.tblGroupDepts      as GD with (nolock)	\
+                          on GD.Client = THD.Client	\
+                             and GD.GroupCode = THD.GroupCode	\
+                             and GD.DeptNo = THD.DeptNo	\
+                      left join TimeCurrent.dbo.tblSiteNames       as sn with (nolock)	\
+                          on sn.Client = THD.Client	\
+                             and sn.GroupCode = THD.GroupCode	\
+                             and sn.SiteNo = THD.SiteNo	\
+                      left join TimeHistory.dbo.tblEmplNames_Depts TH_END with (nolock)	\
+                          on TH_END.Client = THD.Client	\
+                             and TH_END.GroupCode = THD.GroupCode	\
+                             and TH_END.PayrollPeriodEndDate = THD.PayrollPeriodEndDate	\
+                             and TH_END.SSN = THD.SSN	\
+                             and TH_END.Department = THD.DeptNo	\
+                      left join TimeCurrent.dbo.tblEmplNames_Depts tc_end with (nolock)	\
+                          on tc_end.Client = THD.Client	\
+                             and tc_end.GroupCode = THD.GroupCode	\
+                             and tc_end.SSN = THD.SSN	\
+                             and tc_end.Department = THD.DeptNo	\
+                      left join TimeCurrent.dbo.tblAdjCodes        as cAC with (nolock)	\
+                          on cAC.Client = THD.Client	\
+                             and cAC.GroupCode = THD.GroupCode	\
+                             and cAC.ClockAdjustmentNo = THD.ClockAdjustmentNo	; \

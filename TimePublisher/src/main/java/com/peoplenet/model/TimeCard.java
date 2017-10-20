@@ -1,13 +1,11 @@
 package com.peoplenet.model;
 
-import java.util.Date;
-
 public class TimeCard {
 
     private String client;
     private String groupCode;
     private String ssn;
-    private Date payrollPeriodEndDate;
+    private String payrollPeriodEndDate;
     private String firstName;
     private String lastName;
     private Integer siteNo;
@@ -15,13 +13,13 @@ public class TimeCard {
     private String deptName;
     private String clientDeptCode;
     private Integer costID;
-    private Integer assignmentNo;
+    private String assignmentNo;
     private String adjustmentCode;
     private String adjustmentName;
     private Integer agencyNo;
     private String aprvlStatus;
     private String assignmentStartDate;
-    private Date transDate;
+    private String transDate;
     private Double regHours;
     private Double otHours;
     private Double dtHours;
@@ -29,7 +27,9 @@ public class TimeCard {
     private Double otDollars;
     private Double dtDollars    ;
 
-    public TimeCard(String client, String groupCode, String ssn, Date payrollPeriodEndDate, String firstName, String lastName, Integer siteNo, Integer deptNo, String deptName, String clientDeptCode, Integer costID, Integer assignmentNo, String adjustmentCode, String adjustmentName, Integer agencyNo, String aprvlStatus, String assignmentStartDate, Date transDate, Double regHours, Double otHours, Double dtHours, Double regDollars, Double otDollars, Double dtDollars) {
+    public TimeCard(String client, String groupCode, String ssn, String payrollPeriodEndDate, String firstName
+            , String lastName, Integer siteNo, Integer deptNo, String deptName, String clientDeptCode
+            , Integer costID, String assignmentNo, String adjustmentCode, String adjustmentName, Integer agencyNo, String aprvlStatus, String assignmentStartDate, String transDate, Double regHours, Double otHours, Double dtHours, Double regDollars, Double otDollars, Double dtDollars) {
         this.client = client;
         this.groupCode = groupCode;
         this.ssn = ssn;
@@ -56,7 +56,7 @@ public class TimeCard {
         this.dtDollars = dtDollars;
     }
 
-    public TimeCard(String client, String groupCode, String ssn, Date payrollPeriodEndDate) {
+    public TimeCard(String client, String groupCode, String ssn, String payrollPeriodEndDate) {
         this.client = client;
         this.groupCode = groupCode;
         this.ssn = ssn;
@@ -90,11 +90,11 @@ public class TimeCard {
         this.ssn = ssn;
     }
 
-    public Date getPayrollPeriodEndDate() {
+    public String getPayrollPeriodEndDate() {
         return payrollPeriodEndDate;
     }
 
-    public void setPayrollPeriodEndDate(Date payrollPeriodEndDate) {
+    public void setPayrollPeriodEndDate(String payrollPeriodEndDate) {
         this.payrollPeriodEndDate = payrollPeriodEndDate;
     }
 
@@ -154,11 +154,11 @@ public class TimeCard {
         this.costID = costID;
     }
 
-    public Integer getAssignmentNo() {
+    public String getAssignmentNo() {
         return assignmentNo;
     }
 
-    public void setAssignmentNo(Integer assignmentNo) {
+    public void setAssignmentNo(String assignmentNo) {
         this.assignmentNo = assignmentNo;
     }
 
@@ -202,11 +202,11 @@ public class TimeCard {
         this.assignmentStartDate = assignmentStartDate;
     }
 
-    public Date getTransDate() {
+    public String getTransDate() {
         return transDate;
     }
 
-    public void setTransDate(Date transDate) {
+    public void setTransDate(String transDate) {
         this.transDate = transDate;
     }
 
