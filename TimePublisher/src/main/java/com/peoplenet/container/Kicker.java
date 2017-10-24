@@ -1,5 +1,6 @@
 package com.peoplenet.container;
 
+import com.peoplenet.service.module.Poller;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -22,7 +23,7 @@ public class Kicker {
         Server server = new Server(6661);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        //context.addEventListener(new Poller());
+        context.addEventListener(new Poller());
         context.setContextPath("/");
         server.setHandler(context);
 

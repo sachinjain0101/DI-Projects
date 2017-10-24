@@ -41,7 +41,7 @@ public class ConnectionPoolExample {
                 tc.setDeptName(rs.getString(8));
                 tc.setDeptName(rs.getString(9));
                 tc.setClientDeptCode(rs.getString(10));
-                tc.setCostID(rs.getInt(11));
+                tc.setCostID(rs.getString(11));
                 tc.setAssignmentNo(rs.getString(12));
                 tc.setAdjustmentCode(rs.getString(13));
                 tc.setAdjustmentName(rs.getString(14));

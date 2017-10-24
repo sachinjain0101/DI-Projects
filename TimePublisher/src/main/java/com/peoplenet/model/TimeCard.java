@@ -12,7 +12,7 @@ public class TimeCard {
     private Integer deptNo;
     private String deptName;
     private String clientDeptCode;
-    private Integer costID;
+    private String costID;
     private String assignmentNo;
     private String adjustmentCode;
     private String adjustmentName;
@@ -29,7 +29,8 @@ public class TimeCard {
 
     public TimeCard(String client, String groupCode, String ssn, String payrollPeriodEndDate, String firstName
             , String lastName, Integer siteNo, Integer deptNo, String deptName, String clientDeptCode
-            , Integer costID, String assignmentNo, String adjustmentCode, String adjustmentName, Integer agencyNo, String aprvlStatus, String assignmentStartDate, String transDate, Double regHours, Double otHours, Double dtHours, Double regDollars, Double otDollars, Double dtDollars) {
+            , String costID, String assignmentNo, String adjustmentCode, String adjustmentName, Integer agencyNo, String aprvlStatus, String assignmentStartDate
+            , String transDate, Double regHours, Double otHours, Double dtHours, Double regDollars, Double otDollars, Double dtDollars) {
         this.client = client;
         this.groupCode = groupCode;
         this.ssn = ssn;
@@ -146,11 +147,11 @@ public class TimeCard {
         this.clientDeptCode = clientDeptCode;
     }
 
-    public Integer getCostID() {
+    public String getCostID() {
         return costID;
     }
 
-    public void setCostID(Integer costID) {
+    public void setCostID(String costID) {
         this.costID = costID;
     }
 

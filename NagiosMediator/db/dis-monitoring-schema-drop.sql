@@ -1,0 +1,5 @@
+# DROP DATABASE
+DROP DATABASE DIS_MONITORING;
+
+# DROP USER 'dis_user';
+DROP USER 'dis_user';

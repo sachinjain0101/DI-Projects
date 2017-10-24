@@ -73,7 +73,7 @@ TC_QRY=select THD.Client	\
 DT_QRY=select CURRENT_TIMESTAMP AS CT   \
         ;   \
 
-TC_ALL_QRY=select TOP 10000 THD.Client	\
+TC_ALL_QRY=select TOP 3000 THD.Client	\
                        , THD.GroupCode	\
                        , THD.SSN	\
                        , convert(varchar, THD.PayrollPeriodEndDate, 120)	\

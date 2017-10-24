@@ -16,7 +16,7 @@ public class Poller implements ServletContextListener{
     public void contextInitialized(ServletContextEvent sce) {
         LOGGER.debug("Poller Initialized...");
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(new Publisher(), 0, 1000, TimeUnit.MILLISECONDS);
+        service.scheduleAtFixedRate(new Publisher(), 0, 5000, TimeUnit.MILLISECONDS);
     }
 
     @Override
