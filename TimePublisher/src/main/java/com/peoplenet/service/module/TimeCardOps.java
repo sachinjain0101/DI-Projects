@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,8 @@ public class TimeCardOps {
     static {
         props = new Properties();
         try {
-            props.load(new FileInputStream("queries.qry"));
+            URL url = ClassLoader.getSystemResource("queries.qry");
+            props.load(new FileInputStream(url.getFile()));
         } catch (IOException e) {
             e.printStackTrace();
         }
