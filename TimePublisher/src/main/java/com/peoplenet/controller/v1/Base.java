@@ -20,7 +20,8 @@ import java.util.List;
 @Path("/v1")
 public class Base {
 
-    private static final Logger LOGGER = Logger.getLogger(Base.class);
+    @SuppressWarnings("unused")
+	private static final Logger LOGGER = Logger.getLogger(Base.class);
 
     @GET
     @Path("/available")

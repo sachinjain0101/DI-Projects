@@ -55,7 +55,8 @@ public class TimeCardOps {
             PreparedStatement pst = con.prepareStatement(sql);
 
             if(tcp != null) {
-                int i = 0;
+                @SuppressWarnings("unused")
+				int i = 0;
                 pst.setString(1, tcp.getClient());
                 pst.setString(2, tcp.getGroupCode());
                 pst.setString(3, tcp.getPped());

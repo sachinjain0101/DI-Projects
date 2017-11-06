@@ -7,7 +7,8 @@ public class RunTest {
 
     @Test
     public void runMe(){
-        StaticBlockTest sbt = new StaticBlockTest();
+        @SuppressWarnings("unused")
+		StaticBlockTest sbt = new StaticBlockTest();
         System.out.println("method call "+StaticBlockTest.a);
     }
 

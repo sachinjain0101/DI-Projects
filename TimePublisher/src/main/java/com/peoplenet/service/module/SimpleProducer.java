@@ -27,7 +27,7 @@ public class SimpleProducer {
 
     public void sendWithoutCallback(String topic, String value) {
 
-        producer.send(new ProducerRecord(topic, value));
+        producer.send(new ProducerRecord<String, String>(topic, value));
     }
 
     public void sendWithCallback(String topic, String value) {
