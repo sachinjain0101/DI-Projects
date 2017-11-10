@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.peoplenet</groupId>
-    <artifactId>TimePublisher</artifactId>
+    <artifactId>PN-OnPremEtl</artifactId>
     <packaging>jar</packaging>
     <version>0.01</version>
 
@@ -15,15 +15,19 @@
         <jersey.version>2.25</jersey.version>
         <jetty.version>(9.4.0.v20161208,)</jetty.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <kafka.version>0.10.2.1</kafka.version>
     </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>2.6.1</version>
+            <groupId>com.peoplenet</groupId>
+            <artifactId>PN-KafkaPublisher</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.peoplenet</groupId>
+            <artifactId>PN-DataModel</artifactId>
+            <version>0.1</version>
         </dependency>
 
         <dependency>
@@ -115,12 +119,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.9.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.11</artifactId>
-            <version>${kafka.version}</version>
         </dependency>
 
         <dependency>

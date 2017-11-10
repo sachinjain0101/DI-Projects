@@ -3,7 +3,7 @@ package com.peoplenet.controller.v1;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.peoplenet.model.TimeCardParams;
-import com.peoplenet.service.module.SimpleProducer;
+import com.peoplenet.service.SimpleProducer;
 import com.peoplenet.service.module.TimeCardOps;
 import org.apache.log4j.Logger;
 
