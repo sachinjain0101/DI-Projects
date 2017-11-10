@@ -25,10 +25,11 @@ public class Recalc implements Serializable {
 	private int groupCode;
 
 	@Column(name="PPED")
-	private Object pped;
+	private Timestamp pped;
 
+	@Id
 	@Column(name="RecordID")
-	private long recordID;
+	public long recordID;
 
 	@Column(name="SSN")
 	private int ssn;
@@ -63,11 +64,11 @@ public class Recalc implements Serializable {
 		this.groupCode = groupCode;
 	}
 
-	public Object getPped() {
+	public Timestamp getPped() {
 		return this.pped;
 	}
 
-	public void setPped(Object pped) {
+	public void setPped(Timestamp pped) {
 		this.pped = pped;
 	}
 

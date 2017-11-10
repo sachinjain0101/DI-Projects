@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name="tblTimeHistDetail")
-@NamedQuery(name="TimeHistDetail.findAll", query="SELECT t FROM TblTimeHistDetail t",lockMode=LockModeType.NONE)
+@NamedQuery(name="TimeHistDetail.findAll", query="SELECT t FROM TimeHistDetail t",lockMode=LockModeType.NONE)
 public class TimeHistDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
